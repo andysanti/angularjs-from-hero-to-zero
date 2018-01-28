@@ -1,21 +1,56 @@
 <!DOCTIPE html>
-<html lan="en" ng-app>
+<html lan="en" ng-app="minmax">
     <head>
-        <title>DataBinding
+        <title>Controllers
         </title>
         <link href="libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="main.css" rel="stylesheet">
     </head>
     <body>
-        <div class="container" ng-init="title='mi primera app'; awesome=true;">
-            <h1>{{title}} is Awesome: {{awesome}}
-            </h1>
-            <input type="text" class="form-control" ng-model="title"/>
-            <input type="checkbox" class="form-control" ng-model="awesome"/>
+        <nav class="navbar navbar-inverse navbar-fix-top" >
+	       <div class="container" >
+		  <div class="navbar-header" >
+			<a class="navbar-brand"
+			   href="/" >Form Submitting
+			</a >
+		  </div >
+	       </div >
+        </nav >
+        <div class="container main-content" ng-controller="MinMaxCtrl">
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" 
+                     ng-model="formModel.name"      
+                           id="name">
+                    
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" 
+                    ng-model="formModel.email"
+                           id="email">
+                    
+                </div>
+                 <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" 
+                     ng-model="formModel.password"
+                           id="password">
+                    
+                </div>
+                 <div class="form-group">
+                    <button class="btn btn-primary" ng-click="onSubmit()">Register</button>
+                    
+                </div>
+            </form>
+            <pre>{{formModel | json}}</pre>
+            
             
             
         </div>
         
         <script src="libs/angular/angular.min.js"></script>
+         <script src="main.js"></script>
     </body>
 </html>
