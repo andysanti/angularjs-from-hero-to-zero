@@ -3,7 +3,8 @@
     <head>
         <title>Controllers
         </title>
-        <link href="libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/libs/ladda/dist/ladda-themeless.min.css" rel="stylesheet">
         <link href="main.css" rel="stylesheet">
     </head>
     <body>
@@ -11,14 +12,14 @@
 	       <div class="container" >
 		  <div class="navbar-header" >
 			<a class="navbar-brand"
-			   href="/" >Form Validation Part 2
+			   href="/" >User Feedback
 			</a >
 		  </div >
 	       </div >
         </nav >
         <div class="container main-content" ng-controller="MinMaxCtrl">
             <form ng-submit="onSubmit()"
-                   
+                  ng-hide="submitted" 
                   novalidate="novalidate"
                  >
                 <div class="form-group">
@@ -86,18 +87,38 @@
                     
                 </div>
                  <div class="form-group">
-                    <button class="btn btn-primary" type="submit">Register</button>
+                     
+                     <div class="alert alert-danger text-center" ng-show="has_error">
+				        <h3>There was a problem registering, please try again later!</h3>
+			         </div>
+
+                     
+                     
+                    <button class="btn btn-primary"
+                    ladda="submitting"
+                    data-style="expand-right" type="submit">
+                    <span ng-show="submitting">
+                        registering</span>
+                    <span ng-show="!submitting">
+                       Register 
+                        </span>   
+                     </button>
                     
                 </div>
             </form>
-            <pre>{{formModel | json}}</pre>
-            
+           <div class="alert alert-info text-center" ng-show="submitted">
+		      <h3>Thanks for Registering!</h3>
+	       </div>
+
             
             
         </div>
         
         <script src="libs/angular/angular.min.js"></script>
         <script src="libs/angular-auto-validate/dist/jcs-auto-validate.min.js"></script>
+        <script src="libs/ladda/dist/spin.min.js"></script>
+        <script src="libs/ladda/dist/ladda.min.js"></script>
+        <script src="libs/angular-ladda/dist/angular-ladda.min.js"></script>
          <script src="main.js"></script>
     </body>
 </html>
