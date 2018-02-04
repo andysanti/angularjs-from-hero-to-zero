@@ -3,16 +3,20 @@ var app=angular.module('codecraft',[
 ]);
 
 
-app.controller('PersonsController',function($scope){
+app.controller('PersonDetailController',function($scope){
+    
+});
+
+app.controller('PersonListController',function($scope,$rootScope){
     
     
-     $scope.selectedPerson=null;
+     $rootScope.selectedPerson=null;
     $scope.search="";
     $scope.order="email";
     
     $scope.selectPerson=function(person){
        
-        $scope.selectedPerson=person;
+        $rootScope.selectedPerson=person;
     };
     
     
